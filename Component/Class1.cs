@@ -2,7 +2,8 @@
 
 namespace Component
 {
-    public class Class1
+    public class PromoCode
     {
+
     }
 }
