@@ -42,7 +42,7 @@ namespace PromotionEngineUtility
         public bool IsSingleUse { get; set; }
         public bool IsPromotionApplied { get; set; }
         public decimal CalculatePromotion(List<IProduct> _product) {
-            _product.ApplyPromo2();
+            
             IsPromotionApplied = true;
             return 0;
         }
@@ -58,7 +58,7 @@ namespace PromotionEngineUtility
         public bool IsPromotionApplied { get; set; }
         public decimal CalculatePromotion(List<IProduct> _product)
         {
-            _product.ApplyPromo3();
+            
             IsPromotionApplied = true;
             return 0;                 
         }
