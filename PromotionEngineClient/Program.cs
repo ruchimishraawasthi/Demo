@@ -8,22 +8,18 @@ namespace PromotionEngineClient
     class Program
     {
         static void Main(string[] args)
-        {
-            IPromotion promotion1 = new Promotion1();
+        {            
             List<IProduct> cart = new List<IProduct>();
-            //cart.Add(new Product("A", 1, 50) { PromotionType=promotion1});
-            //cart.Add(new Product("B", 1, 30) { PromotionType = promotion1 });
-            //cart.Add(new Product("C", 1, 20) { PromotionType = promotion1 });
-            //cart.Add(new Product("D", 1, 15) { PromotionType = promotion1 });
-
-            cart.Add(new Product("A", 1, 50) { PromotionType = promotion1 });
-            cart.Add(new Product("B", 1, 30) { PromotionType = promotion1 });
-            cart.Add(new Product("C", 1, 20) { PromotionType = promotion1 });
-            //cart.Add(new Product("D", 1, 15) { PromotionType = promotion1 });
-
-            PromotionProvider promotions = new PromotionProvider(promotion1);
+           
+            cart.Add(new Product("A") { Quantity=3});                       
+            cart.Add(new Product("B") { Quantity = 5 });
+            cart.Add(new Product("C") { Quantity = 1 });
+            cart.Add(new Product("D") { Quantity = 1 });
+                        
+            PromotionProvider promotions = new PromotionProvider();
             decimal totalprice = promotions.ApplyPromotion(cart);
-            Console.WriteLine(totalprice);
+            Console.WriteLine("Total price after promotion applied:-"+totalprice);
+            
             Console.ReadLine();
         }
     }
