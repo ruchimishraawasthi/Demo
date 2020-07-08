@@ -132,18 +132,24 @@ namespace PromotionEngineUtility
         }
         public decimal ApplyPromotion(List<IProduct> product)
         {
-            _product = Utility.GetProductA(product);
-            _promotionType = new Promotion1();
-            totalPrice += _promotionType.CalculatePriceAfterPromotion(_product);
+            try
+            {
+                _product = Utility.GetProductA(product);
+                _promotionType = new Promotion1();
+                totalPrice += _promotionType.CalculatePriceAfterPromotion(_product);
 
-            _product = Utility.GetProductB(product);
-            _promotionType = new Promotion2();
-            totalPrice += _promotionType.CalculatePriceAfterPromotion(_product);
+                _product = Utility.GetProductB(product);
+                _promotionType = new Promotion2();
+                totalPrice += _promotionType.CalculatePriceAfterPromotion(_product);
 
-            _product = Utility.GetProductCD(product);
-            _promotionType = new Promotion3();
-            totalPrice += _promotionType.CalculatePriceAfterPromotion(_product);
-
+                _product = Utility.GetProductCD(product);
+                _promotionType = new Promotion3();
+                totalPrice += _promotionType.CalculatePriceAfterPromotion(_product);
+            }
+            catch(Exception ex)
+            {
+                throw new PromotionException("error:-",ex);
+            }
             return totalPrice;
         }
     }
@@ -217,5 +223,11 @@ namespace PromotionEngineUtility
         {
             return products.FindAll(x => x.SKUID == "D" || x.SKUID=="C");
         }
+    }
+}
+public class PromotionException : Exception
+{
+    public PromotionException(string msg,Exception ex): base(String.Format("Promotion Engine Error: {0}", ex))
+    { 
     }
 }
